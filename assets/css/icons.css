@@ -1,0 +1,631 @@
+/* =====================
+   CSS 图标库 - Jay影视
+   全部使用纯CSS绘制图标
+   ===================== */
+
+/* 基础图标容器 */
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  position: relative;
+  font-style: normal;
+}
+.icon::before,
+.icon::after {
+  content: '';
+  position: absolute;
+  display: block;
+}
+
+/* ===== 搜索图标 ===== */
+.icon-search {
+  width: 18px;
+  height: 18px;
+}
+.icon-search::before {
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+}
+.icon-search::after {
+  width: 8px;
+  height: 2px;
+  background: currentColor;
+  transform: rotate(45deg);
+  bottom: 1px;
+  right: 0;
+  border-radius: 1px;
+}
+
+/* ===== 首页图标 ===== */
+.icon-home::before {
+  width: 14px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+  left: 3px;
+  bottom: 2px;
+}
+.icon-home::after {
+  width: 2px;
+  height: 8px;
+  background: currentColor;
+  top: 2px;
+  left: 9px;
+  transform: skewX(-10deg);
+  box-shadow: -7px 0 0 0 currentColor, -3.5px -2px 0 0 currentColor;
+}
+
+/* ===== 用户/头像图标 ===== */
+.icon-user::before {
+  width: 10px;
+  height: 10px;
+  background: currentColor;
+  border-radius: 50%;
+  left: 5px;
+  top: 2px;
+}
+.icon-user::after {
+  width: 16px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 8px 8px 0 0;
+  bottom: 0;
+  left: 2px;
+}
+
+/* ===== 菜单图标 ===== */
+.icon-menu::before,
+.icon-menu::after {
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  left: 2px;
+}
+.icon-menu::before {
+  top: 5px;
+  box-shadow: 0 8px 0 0 currentColor;
+}
+.icon-menu::after {
+  top: 13px;
+}
+
+/* ===== 关闭图标 ===== */
+.icon-close::before,
+.icon-close::after {
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  top: 9px;
+  left: 2px;
+}
+.icon-close::before { transform: rotate(45deg); }
+.icon-close::after { transform: rotate(-45deg); }
+
+/* ===== 收藏/心形图标 ===== */
+.icon-heart {
+  width: 20px;
+  height: 20px;
+}
+.icon-heart::before,
+.icon-heart::after {
+  width: 10px;
+  height: 16px;
+  background: currentColor;
+  border-radius: 10px 10px 0 0;
+  top: 2px;
+}
+.icon-heart::before {
+  left: 2px;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+.icon-heart::after {
+  right: 2px;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+.icon-heart.active::before,
+.icon-heart.active::after {
+  background: #e74c3c;
+}
+
+/* ===== 星星图标 ===== */
+.icon-star {
+  width: 20px;
+  height: 20px;
+}
+.icon-star::before {
+  width: 0;
+  height: 0;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 6px solid currentColor;
+  box-shadow: 0 8px 0 -2px currentColor;
+}
+.icon-star::after {
+  width: 10px;
+  height: 8px;
+  bottom: 2px;
+  left: 5px;
+  background: linear-gradient(45deg, transparent 45%, currentColor 45%, currentColor 55%, transparent 55%),
+              linear-gradient(-45deg, transparent 45%, currentColor 45%, currentColor 55%, transparent 55%);
+}
+
+/* ===== 播放图标 ===== */
+.icon-play::before {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid currentColor;
+  left: 7px;
+  top: 4px;
+}
+
+/* ===== 时钟图标 ===== */
+.icon-clock::before {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+}
+.icon-clock::after {
+  width: 2px;
+  height: 7px;
+  background: currentColor;
+  border-radius: 2px;
+  top: 5px;
+  left: 9px;
+  box-shadow: -2px 2px 0 -0.5px currentColor;
+}
+
+/* ===== 历史图标 ===== */
+.icon-history::before {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  border-right-color: transparent;
+}
+.icon-history::after {
+  width: 2px;
+  height: 6px;
+  background: currentColor;
+  top: 5px;
+  left: 9px;
+  box-shadow: -2px 2px 0 -0.5px currentColor;
+}
+
+/* ===== 电影图标 ===== */
+.icon-film::before {
+  width: 14px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  top: 4px;
+  left: 3px;
+}
+.icon-film::after {
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+  top: 9px;
+  left: 5px;
+  box-shadow: 0 -3px 0 0 currentColor;
+}
+
+/* ===== 电视图标 ===== */
+.icon-tv::before {
+  width: 14px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  top: 2px;
+  left: 3px;
+}
+.icon-tv::after {
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+  bottom: 2px;
+  left: 5px;
+  box-shadow: 0 2px 0 0 currentColor;
+  border-radius: 0 0 2px 2px;
+}
+
+/* ===== 综艺图标 ===== */
+.icon-variety::before {
+  width: 14px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  top: 2px;
+  left: 3px;
+}
+.icon-variety::after {
+  width: 6px;
+  height: 6px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  top: 4px;
+  left: 7px;
+}
+
+/* ===== 动漫图标 ===== */
+.icon-anime::before {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  top: 1px;
+  left: 2px;
+}
+.icon-anime::after {
+  width: 2px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 50%;
+  top: 7px;
+  left: 6px;
+  box-shadow: 6px 0 0 0 currentColor;
+}
+
+/* ===== 反馈/消息图标 ===== */
+.icon-message::before {
+  width: 14px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-radius: 3px;
+  top: 3px;
+  left: 3px;
+}
+.icon-message::after {
+  width: 0;
+  height: 0;
+  border: 4px solid transparent;
+  border-top-color: currentColor;
+  border-right-color: currentColor;
+  bottom: 2px;
+  left: 4px;
+}
+
+/* ===== 箭头图标 ===== */
+.icon-arrow-right::after {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  transform: rotate(45deg);
+  top: 6px;
+  left: 5px;
+}
+
+/* ===== 下拉箭头 ===== */
+.icon-chevron-down::after {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  top: 4px;
+  left: 6px;
+}
+
+/* ===== 加号图标 ===== */
+.icon-plus::before,
+.icon-plus::after {
+  background: currentColor;
+  border-radius: 2px;
+}
+.icon-plus::before {
+  width: 14px;
+  height: 2px;
+  top: 9px;
+  left: 3px;
+}
+.icon-plus::after {
+  width: 2px;
+  height: 14px;
+  top: 3px;
+  left: 9px;
+}
+
+/* ===== 减号图标 ===== */
+.icon-minus::before {
+  width: 14px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  top: 9px;
+  left: 3px;
+}
+
+/* ===== 编辑图标 ===== */
+.icon-edit::before {
+  width: 10px;
+  height: 4px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  top: 8px;
+  left: 2px;
+}
+.icon-edit::after {
+  width: 0;
+  height: 0;
+  border: 4px solid transparent;
+  border-left-color: currentColor;
+  border-top-color: currentColor;
+  transform: rotate(-45deg);
+  top: 4px;
+  left: 12px;
+}
+
+/* ===== 删除图标 ===== */
+.icon-trash::before {
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-top: none;
+  border-radius: 0 0 2px 2px;
+  top: 6px;
+  left: 4px;
+}
+.icon-trash::after {
+  width: 14px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  top: 4px;
+  left: 3px;
+  box-shadow: -2px -2px 0 -0.5px currentColor, 2px -2px 0 -0.5px currentColor;
+}
+
+/* ===== 设置图标 ===== */
+.icon-settings::before {
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  top: 4px;
+  left: 4px;
+}
+.icon-settings::after {
+  width: 14px;
+  height: 14px;
+  top: 3px;
+  left: 3px;
+  background:
+    linear-gradient(currentColor, currentColor) center/100% 2px no-repeat,
+    linear-gradient(currentColor, currentColor) center/2px 100% no-repeat,
+    linear-gradient(45deg, transparent 40%, currentColor 40%, currentColor 60%, transparent 60%) center/100% 100% no-repeat,
+    linear-gradient(-45deg, transparent 40%, currentColor 40%, currentColor 60%, transparent 60%) center/100% 100% no-repeat;
+  opacity: 0.5;
+  -webkit-mask: radial-gradient(circle, transparent 40%, black 40%);
+          mask: radial-gradient(circle, transparent 40%, black 40%);
+}
+
+/* ===== 铃铛/通知图标 ===== */
+.icon-bell::before {
+  width: 12px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  top: 3px;
+  left: 4px;
+}
+.icon-bell::after {
+  width: 14px;
+  height: 4px;
+  border: 2px solid currentColor;
+  border-radius: 0 0 4px 4px;
+  border-top: none;
+  bottom: 1px;
+  left: 3px;
+  box-shadow: 0 -3px 0 -2px currentColor;
+}
+
+/* ===== 点赞图标 ===== */
+.icon-like::before {
+  width: 10px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 6px 2px 2px 2px;
+  transform: rotate(-45deg);
+  top: 4px;
+  left: 5px;
+}
+.icon-like.active::before {
+  background: currentColor;
+}
+
+/* ===== 仪表盘图标 ===== */
+.icon-dashboard::before {
+  width: 14px;
+  height: 7px;
+  border: 2px solid currentColor;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  top: 4px;
+  left: 3px;
+}
+.icon-dashboard::after {
+  width: 2px;
+  height: 6px;
+  background: currentColor;
+  transform: rotate(-30deg);
+  transform-origin: bottom center;
+  top: 6px;
+  left: 9px;
+  border-radius: 2px;
+}
+
+/* ===== 用户组图标 ===== */
+.icon-users::before {
+  width: 8px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 50%;
+  left: 6px;
+  top: 2px;
+}
+.icon-users::after {
+  width: 14px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 10px 10px 0 0;
+  bottom: 0;
+  left: 3px;
+  box-shadow: -4px 0 0 -1px currentColor, 4px 0 0 -1px currentColor;
+  opacity: 0.9;
+}
+
+/* ===== 公告图标 ===== */
+.icon-bullhorn::before {
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 10px solid currentColor;
+  top: 4px;
+  left: 8px;
+}
+.icon-bullhorn::after {
+  width: 6px;
+  height: 8px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  top: 4px;
+  left: 2px;
+}
+
+/* ===== 主题色盘图标 ===== */
+.icon-palette::before {
+  width: 14px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-radius: 10px 10px 2px 10px;
+  top: 3px;
+  left: 2px;
+}
+.icon-palette::after {
+  width: 3px;
+  height: 3px;
+  background: currentColor;
+  border-radius: 50%;
+  top: 6px;
+  left: 5px;
+  box-shadow: 5px 0 0 0 currentColor, -2px 4px 0 0 currentColor;
+}
+
+/* ===== 邮件图标 ===== */
+.icon-mail::before {
+  width: 14px;
+  height: 10px;
+  border: 2px solid currentColor;
+  border-radius: 2px;
+  top: 5px;
+  left: 3px;
+}
+.icon-mail::after {
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top: 5px solid currentColor;
+  top: 9px;
+  left: 5px;
+}
+
+/* ===== 封禁图标 ===== */
+.icon-ban::before {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+}
+.icon-ban::after {
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  top: 9px;
+  left: 2px;
+  border-radius: 2px;
+}
+
+/* ===== 开发者Logo（红色） ===== */
+.dev-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 10px 10px 10px 2px;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 50%, #a93226 100%);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+  margin-left: 6px;
+  vertical-align: middle;
+  overflow: visible;
+}
+.dev-badge::before {
+  content: '开发者';
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 2;
+}
+.dev-badge::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 50%);
+  border-radius: inherit;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Logo 外层发光装饰 */
+.dev-badge {
+  --glow: radial-gradient(circle at 30% 30%, rgba(255,120,100,0.6), transparent 60%);
+}
+.dev-badge { animation: badge-pulse 2.2s ease-in-out infinite; }
+
+/* Logo 动画 */
+@keyframes badge-pulse {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(231, 76, 60, 0.45), inset 0 1px 0 rgba(255,255,255,0.2),
+                0 0 0 0 rgba(231, 76, 60, 0.35);
+  }
+  50% {
+    box-shadow: 0 2px 16px rgba(231, 76, 60, 0.75), inset 0 1px 0 rgba(255,255,255,0.25),
+                0 0 0 4px rgba(231, 76, 60, 0.12);
+  }
+}
