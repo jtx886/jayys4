@@ -222,11 +222,13 @@ function get_theme_colors() {
 
 /**
  * TMDB API请求封装（带缓存）
+ * 优先使用Bearer Token认证，失败时回退API Key
  */
 function tmdb_request($endpoint, $params = []) {
-    if (empty(TMDB_API_KEY)) return null;
+    if (empty(TMDB_API_KEY) && !defined('TMDB_BEARER_TOKEN') || (defined('TMDB_BEARER_TOKEN') && empty(TMDB_BEARER_TOKEN))) {
+        return null;
+    }
 
-    $params['api_key'] = TMDB_API_KEY;
     if (!isset($params['language'])) $params['language'] = TMDB_LANG;
     if (!isset($params['region'])) $params['region'] = TMDB_REGION;
 
@@ -240,15 +242,54 @@ function tmdb_request($endpoint, $params = []) {
         if ($cached) return json_decode($cached, true);
     }
 
-    $url = TMDB_BASE_URL . $endpoint . '?' . http_build_query($params);
+    // ===== 优先使用 Bearer Token 认证方式 =====
+    $useBearer = defined('TMDB_BEARER_TOKEN') && !empty(TMDB_BEARER_TOKEN);
+    if ($useBearer) {
+        $url = TMDB_BASE_URL . $endpoint . '?' . http_build_query($params);
+    } else {
+        $params['api_key'] = TMDB_API_KEY;
+        $url = TMDB_BASE_URL . $endpoint . '?' . http_build_query($params);
+    }
 
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, 30);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    // 设置浏览器UA避免被拦截
+    curl_setopt($ch, CURLOPT_USERAGENT, 'JayVideo/1.0 (TMDB API Client)');
+    curl_setopt($ch, CURLOPT_ACCEPT_ENCODING, 'gzip, deflate');
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+    if ($useBearer) {
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Accept: application/json',
+            'Authorization: Bearer ' . TMDB_BEARER_TOKEN,
+        ]);
+    }
+
     $result = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curlErr = curl_error($ch);
     curl_close($ch);
+
+    // Bearer失败，回退使用API Key方式
+    if ($useBearer && ($httpCode !== 200 || !$result) && !empty(TMDB_API_KEY)) {
+        $params['api_key'] = TMDB_API_KEY;
+        $url2 = TMDB_BASE_URL . $endpoint . '?' . http_build_query($params);
+
+        $ch2 = curl_init();
+        curl_setopt($ch2, CURLOPT_URL, $url2);
+        curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch2, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch2, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch2, CURLOPT_USERAGENT, 'JayVideo/1.0 (TMDB API Client)');
+        curl_setopt($ch2, CURLOPT_FOLLOWLOCATION, true);
+        $result = curl_exec($ch2);
+        curl_close($ch2);
+    }
 
     if ($result) {
         if (!is_dir($cacheDir)) @mkdir($cacheDir, 0755, true);

@@ -1,12 +1,16 @@
 <?php
 // Jay影视 - 主配置文件
 
-// 数据库配置
-define('DB_HOST', 'localhost');
+// 数据库配置 (MySQL)
+// InfinityFree部署时修改为主机提供商给的主机名、用户名、密码、库名
+define('DB_HOST', '127.0.0.1');
+define('DB_PORT', '3306');
 define('DB_NAME', 'jay_video');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_USER', 'jay_user');
+define('DB_PASS', 'Jtx101113@');
 define('DB_CHARSET', 'utf8mb4');
+// 可选：Unix Socket路径（本地测试环境root用户走socket，部署时留空即可）
+define('DB_SOCKET', '');
 
 // SMTP配置 - 163邮箱
 define('SMTP_HOST', 'smtp.163.com');
@@ -17,7 +21,8 @@ define('SMTP_FROM', 'jtxnb886@163.com');
 define('SMTP_FROM_NAME', 'Jay影视');
 
 // TMDB API配置
-define('TMDB_API_KEY', ''); // 用户需要在此填入自己的TMDB API Key
+define('TMDB_API_KEY', 'cb44223c5dee5676ed3a839f42ed27e3'); // 杰同学的TMDB API Key
+define('TMDB_BEARER_TOKEN', 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYjQ0MjIzYzVkZWU1Njc2ZWQzYTM5ZjQyZWQyN2UzIiwiZXhwIjoxOTk3NzkyODA4LCJzdWIiOiI2OWFjYmVlYmM3NzExYTg5ZWI4ZjRmZTk5YTRjZjU2ZWNkYzFhMWMyZjc0NjI0In0.95UWM3wql05P9SnJf0Py9NNjMikjsXSNGX7a6i6t4qs'); // 杰同学的API读访问令牌
 define('TMDB_LANG', 'zh-CN');
 define('TMDB_REGION', 'CN');
 define('TMDB_BASE_URL', 'https://api.themoviedb.org/3');
